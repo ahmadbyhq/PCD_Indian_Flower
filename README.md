@@ -31,14 +31,13 @@ Setiap model dilatih dengan setiap metode preprocessing, sehingga ada 6 skenario
 
 ## Setup
 
-Membutuhkan **Python 3.11** (TensorFlow belum mendukung Python 3.14).
+Membutuhkan **Python 3.11**
 
 ```bash
 git clone https://github.com/ahmadbyhq/PCD_Indian_Flower.git
 cd PCD_Indian_Flower
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate     # Mac/Linux
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -59,7 +58,7 @@ python src/data_split.py        # membuat file CSV train/val/test
 python src/save_processed.py    # membuat citra hasil Min-Max dan CLAHE
 ```
 
-Training (masih dalam pengerjaan):
+Training:
 
 ```bash
 python src/train.py --model mobilenetv2 --prep clahe
@@ -78,7 +77,7 @@ Jalankan sekali untuk tiap skenario dengan kombinasi yang berbeda.
 ├── requirements.txt
 ├── .gitignore
 ├── configs/
-│   └── config.yaml            # pengaturan bersama (seed, epoch, learning rate, dll.)
+│   └── config.yaml            # pengaturan bersama (epoch, learning rate, dll.)
 ├── data/
 │   ├── raw/                   # dataset asli (tidak di-commit)
 │   ├── processed/             # citra Min-Max dan CLAHE dalam format PNG (tidak di-commit)
