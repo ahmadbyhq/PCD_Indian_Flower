@@ -11,7 +11,7 @@ def to_minmax(img_rgb: np.ndarray) -> np.ndarray:
     """Min-Max per citra ke [0,1]."""
     img = img_rgb.astype(np.float32)
     mn, mx = img.min(), img.max()
-    if mx - mn < 1e-8:            # citra seragam, hindari bagi nol
+    if mx - mn < 1e-8:
         return np.zeros_like(img)
     return (img - mn) / (mx - mn)
 
