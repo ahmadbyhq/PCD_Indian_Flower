@@ -58,10 +58,24 @@ python src/data_split.py        # membuat file CSV train/val/test
 python src/save_processed.py    # membuat citra hasil Min-Max dan CLAHE
 ```
 
-Training:
+Training & Evaluasi:
 
 ```bash
+python src/train.py --model mobilenetv2 --prep original
+python src/train.py --model mobilenetv2 --prep minmax
 python src/train.py --model mobilenetv2 --prep clahe
+
+python src/train.py --model efficientnetb0 --prep original
+python src/train.py --model efficientnetb0 --prep minmax
+python src/train.py --model efficientnetb0 --prep clahe
+
+python src/evaluate.py --model mobilenetv2 --prep original
+python src/evaluate.py --model mobilenetv2 --prep minmax
+python src/evaluate.py --model mobilenetv2 --prep clahe
+
+python src/evaluate.py --model efficientnetb0 --prep original
+python src/evaluate.py --model efficientnetb0 --prep minmax
+python src/evaluate.py --model efficientnetb0 --prep clahe
 ```
 
 - `--model`: `mobilenetv2` atau `efficientnetb0`
@@ -85,9 +99,9 @@ Jalankan sekali untuk tiap skenario dengan kombinasi yang berbeda.
 │   │   └── clahe/
 │   └── splits/                # train.csv, val.csv, test.csv
 ├── notebooks/
-│   ├── 01_eda.ipynb                  # gambaran dataset dan distribusi kelas
-│   ├── 02_preprocessing_demo.ipynb   # perbandingan before/after dan histogram
-│   └── 03_results_analysis.ipynb     # analisis hasil dan confusion matrix
+│   ├── exploration_data.ipynb        # gambaran dataset dan distribusi kelas
+│   ├── preprocessing_demo.ipynb   # perbandingan before/after dan histogram
+│   └── results_analysis.ipynb     # analisis hasil dan confusion matrix
 ├── src/
 │   ├── data_split.py          # membuat stratified split train/val/test
 │   ├── preprocessing.py       # fungsi original, Min-Max, dan CLAHE
