@@ -1,0 +1,24 @@
+# Pengaturan bersama untuk SEMUA skenario (A-F). Jangan diubah antar skenario.
+seed: 42                 # seed default training (split sudah dikunci di data_split.py)
+img_size: 224
+batch_size: 32
+
+model:
+  pretrained: true       # bobot ImageNet
+  dropout: 0.3
+
+augmentation:
+  enabled: true          # flip horizontal, rotasi ringan, zoom ringan (sama untuk semua skenario)
+
+train:
+  # Tahap 1: base model dibekukan, hanya head klasifikasi yang dilatih
+  head_epochs: 10
+  head_lr: 1.0e-3
+  # Tahap 2: fine-tuning N layer terakhir base model (BatchNorm tetap beku)
+  finetune_epochs: 30
+  finetune_lr: 1.0e-5
+  unfreeze_layers: 30
+  # Callback (memantau val_loss, bukan test)
+  early_stopping_patience: 5
+  reduce_lr_patience: 2
+  reduce_lr_factor: 0.5
