@@ -58,6 +58,8 @@ python src/data_split.py        # membuat file CSV train/val/test
 python src/save_processed.py    # membuat citra hasil Min-Max dan CLAHE
 ```
 
+Lanjut run notebooks (exploration_data dan prepocessing.ipynb)
+
 Training & Evaluasi:
 
 ```bash
@@ -82,6 +84,8 @@ python src/evaluate.py --model efficientnetb0 --prep clahe
 - `--prep`: `original`, `minmax`, atau `clahe`
 
 Jalankan sekali untuk tiap skenario dengan kombinasi yang berbeda.
+
+Lanjut run results_analysis.ipynb untuk meilhat hasil model dengan semua skenario
 
 ## Struktur Project
 
