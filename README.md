@@ -130,6 +130,6 @@ File yang belum dibuat (`dataset.py`, `models.py`, `train.py`, `evaluate.py`) ak
 - **Min-Max:** setiap citra diskalakan dengan nilai min dan max-nya sendiri: `(x - min) / (max - min)`.
 - **CLAHE:** peningkatan kontras pada channel L di ruang warna LAB, supaya warna bunga tidak bergeser. Parameter: `clipLimit=2.0`, `tileGridSize=(8, 8)`.
 
-## Teknologi
+## Tech Stack
 
 Python 3.11.9, TensorFlow 2.21.0, OpenCV, scikit-learn, pandas, NumPy, Matplotlib, Seaborn.

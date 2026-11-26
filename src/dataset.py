@@ -1,10 +1,3 @@
-"""Memuat citra dari CSV split.
-
-Semua skenario dimuat sebagai piksel 0-255 (float32). Normalisasi khusus model
-(MobileNetV2: [-1,1], EfficientNetB0: bawaan 0-255) dilakukan DI DALAM model
-(lihat models.py), sehingga perbandingan antar-preprocessing adil dan tidak
-terjadi normalisasi ganda.
-"""
 from pathlib import Path
 
 import pandas as pd
@@ -51,7 +44,7 @@ def make_dataset(split: str, prep: str, class_names: list[str], cfg: dict,
     def load(path, label):
         img = tf.io.decode_image(tf.io.read_file(path), channels=3,
                                  expand_animations=False)
-        img = tf.image.resize(img, (size, size))  # float32, rentang 0-255
+        img = tf.image.resize(img, (size, size))
         img.set_shape((size, size, 3))
         return img, label
 

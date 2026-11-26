@@ -1,8 +1,3 @@
-"""Evaluasi satu skenario di data TEST.
-
-Contoh:
-    python src/evaluate.py --model mobilenetv2 --prep clahe
-"""
 import argparse
 import json
 

@@ -1,9 +1,3 @@
-"""Training satu skenario.
-
-Contoh:
-    python src/train.py --model mobilenetv2 --prep clahe
-    python src/train.py --model efficientnetb0 --prep minmax --seed 123
-"""
 import argparse
 import json
 import time
@@ -57,16 +51,14 @@ def main():
     tcfg = cfg["train"]
     t0 = time.time()
 
-    # Tahap 1: latih head saja
     print(f"\n[{name}] Tahap 1: latih head (base dibekukan)")
     compile_model(model, tcfg["head_lr"])
     h1 = model.fit(train_ds, validation_data=val_ds,
                    epochs=tcfg["head_epochs"], callbacks=make_callbacks(tcfg))
 
-    # Tahap 2: fine-tuning layer terakhir dengan LR kecil
     print(f"\n[{name}] Tahap 2: fine-tune {tcfg['unfreeze_layers']} layer terakhir")
     set_finetune(base, tcfg["unfreeze_layers"])
-    compile_model(model, tcfg["finetune_lr"])  # wajib compile ulang
+    compile_model(model, tcfg["finetune_lr"])
     h2 = model.fit(train_ds, validation_data=val_ds,
                    epochs=tcfg["finetune_epochs"], callbacks=make_callbacks(tcfg))
 
